@@ -1,4 +1,4 @@
-<h1 align="center">Portfolio — Duta Razaq</h1>
+<h1 align="center">Portfolio</h1>
 <p align="center">Single-page portfolio for Data Analytics & Web Development</p>
 
 <p align="center">

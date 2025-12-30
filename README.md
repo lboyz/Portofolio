@@ -1,6 +1,6 @@
 # Portfolio Website
 
-Modern single-page portfolio built with React, Vite, TypeScript, and Tailwind CSS.
+Modern single-page portfolio built with React, Vite, TypeScript, and Tailwind CSS. The goal is to showcase Duta Razaq's skills, projects, and experience in a clean, fast, and accessible format.
 
 ## Setup
 

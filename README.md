@@ -10,7 +10,7 @@
 
 ## Overview
 
-Portfolio ini dirancang untuk menampilkan profil, keahlian, proyek unggulan, dan pengalaman Duta Razaq dalam tampilan yang modern, minimal, dan aksesibel. Fokus utama ada pada data analytics dan web development, dengan navigasi mulus antar bagian dan dukungan mode gelap.
+Portfolio ini dirancang untuk menampilkan profil, keahlian, proyek unggulan, dan pengalaman dalam tampilan yang modern, minimal, dan aksesibel. Fokus utama ada pada data analytics dan web development, dengan navigasi mulus antar bagian.
 
 ## Highlights
 

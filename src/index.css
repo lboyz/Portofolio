@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Sora:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  .dark {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-mist text-ink-900 font-body antialiased;
+    min-height: 100vh;
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(39, 195, 168, 0.12),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 10%,
+        rgba(33, 88, 212, 0.12),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 80%,
+        rgba(139, 92, 246, 0.08),
+        transparent 50%
+      ),
+      linear-gradient(180deg, #f6f8fb 0%, #edf1f7 100%);
+  }
+
+  .dark body {
+    @apply bg-ink-900 text-mist;
+    background-image: radial-gradient(
+        circle at 20% 20%,
+        rgba(39, 195, 168, 0.15),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 75% 15%,
+        rgba(80, 120, 255, 0.12),
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 50% 80%,
+        rgba(139, 92, 246, 0.1),
+        transparent 50%
+      ),
+      linear-gradient(180deg, #0b0f14 0%, #0f1724 100%);
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible {
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-mist;
+  }
+
+  .dark a:focus-visible,
+  .dark button:focus-visible,
+  .dark input:focus-visible {
+    @apply ring-offset-ink-900;
+  }
+
+  .skip-link {
+    @apply absolute left-4 top-4 z-50 -translate-y-16 rounded-full bg-ink-900 px-4 py-2 text-xs font-semibold text-white transition;
+  }
+
+  .skip-link:focus {
+    @apply translate-y-0;
+  }
+}
+
+@layer components {
+  .section-card {
+    @apply rounded-2xl border border-white/60 bg-white/80 shadow-lg backdrop-blur-md transition-all duration-300;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05),
+      0 2px 4px -1px rgba(0, 0, 0, 0.03), 0 0 0 1px rgba(255, 255, 255, 0.5);
+  }
+
+  .section-card:hover {
+    @apply shadow-xl;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.08),
+      0 10px 10px -5px rgba(0, 0, 0, 0.02), 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+
+  .dark .section-card {
+    @apply border-white/10 bg-white/5;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3),
+      0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .dark .section-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4),
+      0 10px 10px -5px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  }
+
+  .reveal {
+    @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
+  }
+
+  .reveal-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal,
+    .reveal-visible {
+      @apply opacity-100 translate-y-0;
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}

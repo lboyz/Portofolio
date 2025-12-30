@@ -415,25 +415,14 @@ function App() {
             <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-6">
               {[
                 {
-                  title: "Data Management Intern",
-                  company: "Telkom Witel Bandung",
-                  year: "07/2024 - 08/2024",
+                  title: "Data Analytics Intern",
+                  company: "PT Perkebunan Nusantara III (Persero)",
+                  year: "10/2025 - Now",
                   bullets: [
-                    "Conducted customer and network data validation using CAREnt, Valins, UIMTOOLS, and NOSSF-UIM to ensure data accuracy and consistency.",
-                    "Performed Drop Core and Drop Only processes for inactive ODP panels and supported data synchronization across platforms.",
-                    "Assisted field operations, including ODP installation, Drop Core dismantling, and ODC validation to maintain service quality.",
-                    "Prepared daily administrative reports to support the operations of the Data Management Unit.",
-                  ],
-                },
-                {
-                  title: "Front-end Developer Intern",
-                  company: "Humic Engineering",
-                  year: "09/2024 - 11/2024",
-                  bullets: [
-                    "Redesigned and implemented the AIGO healthcare platform catalog using Flutter to improve interface responsiveness and user experience.",
-                    "Translated UI/UX designs into a modern, responsive, and user-friendly web interface in accordance with project requirements.",
-                    "Collaborated with UI/UX designers to ensure alignment between design and functionality through iterative testing across multiple devices.",
-                    "Maintained structured documentation to support the development process and version tracking.",
+                    "Developed and maintained interactive dashboards using Looker Studio integrated with BigQuery, enabling automated data updates, dynamic filtering, and real-time financial and operational insights across PTPN Group.",
+                    "Performed data preparation and integration from multiple sources (Excel, Google Sheets, BigQuery), including data cleaning, validation, handling null/NaN values, and restructuring datasets to ensure analytical consistency.",
+                    "Designed data architecture and analytical models for corporate dashboards, supporting cash balance monitoring, KPI tracking, and management reporting through structured data pipelines.",
+                    "Collaborated with stakeholders to refine analytics requirements and improve dashboard usability, incorporating user feedback, visual design standards, and business logic to enhance decision-making support.",
                   ],
                 },
                 {
@@ -448,16 +437,27 @@ function App() {
                   ],
                 },
                 {
-                  title: "Data Analytics Intern",
-                  company: "PT Perkebunan Nusantara III (Persero)",
-                  year: "10/2025 - Now",
+                  title: "Front-end Developer Intern",
+                  company: "Humic Engineering",
+                  year: "09/2024 - 11/2024",
                   bullets: [
-                    "Developed and maintained interactive dashboards using Looker Studio integrated with BigQuery, enabling automated data updates, dynamic filtering, and real-time financial and operational insights across PTPN Group.",
-                    "Performed data preparation and integration from multiple sources (Excel, Google Sheets, BigQuery), including data cleaning, validation, handling null/NaN values, and restructuring datasets to ensure analytical consistency.",
-                    "Designed data architecture and analytical models for corporate dashboards, supporting cash balance monitoring, KPI tracking, and management reporting through structured data pipelines.",
-                    "Collaborated with stakeholders to refine analytics requirements and improve dashboard usability, incorporating user feedback, visual design standards, and business logic to enhance decision-making support.",
+                    "Redesigned and implemented the AIGO healthcare platform catalog using Flutter to improve interface responsiveness and user experience.",
+                    "Translated UI/UX designs into a modern, responsive, and user-friendly interface in accordance with project requirements.",
+                    "Collaborated with UI/UX designers to ensure alignment between design and functionality through iterative testing across multiple devices.",
+                    "Maintained structured documentation to support the development process and version tracking.",
                   ],
                 },
+                {
+                  title: "Data Management Intern",
+                  company: "Telkom Witel Bandung",
+                  year: "07/2024 - 08/2024",
+                  bullets: [
+                    "Conducted customer and network data validation using CAREnt, Valins, UIMTOOLS, and NOSSF-UIM to ensure data accuracy and consistency.",
+                    "Performed Drop Core and Drop Only processes for inactive ODP panels and supported data synchronization across platforms.",
+                    "Assisted field operations, including ODP installation, Drop Core dismantling, and ODC validation to maintain service quality.",
+                    "Prepared daily administrative reports to support the operations of the Data Management Unit.",
+                  ],
+                },                
               ].map((item) => (
                 <div
                   key={item.title}

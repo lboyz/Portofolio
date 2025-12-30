@@ -1,30 +1,17 @@
-# Portfolio Website
+# Portfolio
 
-Modern single-page portfolio built with React, Vite, TypeScript, and Tailwind CSS. The goal is to showcase Duta Razaq's skills, projects, and experience in a clean, fast, and accessible format.
+Portfolio satu halaman yang menampilkan profil, keahlian, proyek unggulan, dan pengalaman Duta Razaq dalam format yang modern, bersih, dan mudah diakses. Dirancang untuk memberi gambaran cepat tentang kekuatan utama di data analytics dan web development dengan navigasi yang mulus serta dukungan mode gelap.
 
-## Setup
+## Fokus Utama
 
-```bash
-npm install
-npm run dev
-```
+- Data analytics & storytelling
+- Web development modern
+- UI/UX yang rapi, minimal, dan responsif
+- Aksesibilitas dan performa
 
-Open `http://localhost:5173` in your browser.
+## Sorotan
 
-## Scripts
-
-- `npm run dev` - start local development server
-- `npm run build` - typecheck and build for production
-- `npm run preview` - preview the production build locally
-- `npm run lint` - run ESLint
-
-## Netlify Deployment
-
-1. Push this repository to GitHub (or another Git provider supported by Netlify).
-2. In Netlify, create a new site and connect the repository.
-3. Configure build settings:
-   - Build command: `npm run build`
-   - Publish directory: `dist`
-4. Deploy. Netlify will handle future builds on every push.
-
-Optional: set a custom domain in Netlify once the first deployment succeeds.
+- Struktur one-page: Home, About, Skills, Projects, Experience, Contact
+- Filter proyek + pencarian kata kunci
+- Skill badges dengan logo + level kemahiran saat hover
+- Dark mode dengan tampilan premium

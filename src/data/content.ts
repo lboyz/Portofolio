@@ -136,6 +136,18 @@ export const projects: Project[] = [
     ],
     year: "2025",
   },
+  {
+    id: "portfolio-site",
+    title: "Portfolio Website",
+    description:
+      "Personal portfolio website showcasing skills, featured projects, and experience with a premium one-page layout.",
+    category: "web",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    demoUrl: "https://dutsky.netlify.app/",
+    repoUrl: "https://github.com/lboyz/Portofolio",
+    impact: ["Premium single-page layout", "Project filtering", "Dark mode"],
+    year: "2025",
+  },
 ];
 
 export const featuredProjectIds = ["death-analysis-id", "ptpn-dashboard"];

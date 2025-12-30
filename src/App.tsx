@@ -415,23 +415,47 @@ function App() {
             <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-6">
               {[
                 {
-                  title: "Data Analyst Intern",
-                  company: "[Company]",
-                  year: "[Year]",
+                  title: "Data Management Intern",
+                  company: "Telkom Witel Bandung",
+                  year: "07/2024 - 08/2024",
                   bullets: [
-                    "Prepared weekly dashboards for stakeholders.",
-                    "Cleaned and validated datasets for analysis.",
-                    "Delivered KPI insights for business decisions.",
+                    "Conducted customer and network data validation using CAREnt, Valins, UIMTOOLS, and NOSSF-UIM to ensure data accuracy and consistency.",
+                    "Performed Drop Core and Drop Only processes for inactive ODP panels and supported data synchronization across platforms.",
+                    "Assisted field operations, including ODP installation, Drop Core dismantling, and ODC validation to maintain service quality.",
+                    "Prepared daily administrative reports to support the operations of the Data Management Unit.",
                   ],
                 },
                 {
                   title: "Front-end Developer Intern",
-                  company: "[Company]",
-                  year: "[Year]",
+                  company: "Humic Engineering",
+                  year: "09/2024 - 11/2024",
                   bullets: [
-                    "Built responsive UI components with design systems.",
-                    "Optimized page performance and accessibility.",
-                    "Collaborated with QA to ship polished releases.",
+                    "Redesigned and implemented the AIGO healthcare platform catalog using Flutter to improve interface responsiveness and user experience.",
+                    "Translated UI/UX designs into a modern, responsive, and user-friendly web interface in accordance with project requirements.",
+                    "Collaborated with UI/UX designers to ensure alignment between design and functionality through iterative testing across multiple devices.",
+                    "Maintained structured documentation to support the development process and version tracking.",
+                  ],
+                },
+                {
+                  title: "Data Analytics Intern",
+                  company: "Motiolabs Indonesia",
+                  year: "11/2024 - 01/2025",
+                  bullets: [
+                    "Performed preprocessing and analysis of air quality data (PM2.5 in Jambi City, 2020–2024), including data cleaning, normalization, and handling of missing values.",
+                    "Implemented time series forecasting models (SVR, Random Forest, XGBoost, and LSTM) to predict PM2.5 concentration trends.",
+                    "Evaluated model performance using MSE, RMSE, and MAE to achieve reliable forecasting accuracy.",
+                    "Maintained dataset archives and documentation to support data transparency and consistency.",
+                  ],
+                },
+                {
+                  title: "Data Analytics Intern",
+                  company: "PT Perkebunan Nusantara III (Persero)",
+                  year: "10/2025 - Now",
+                  bullets: [
+                    "Developed and maintained interactive dashboards using Looker Studio integrated with BigQuery, enabling automated data updates, dynamic filtering, and real-time financial and operational insights across PTPN Group.",
+                    "Performed data preparation and integration from multiple sources (Excel, Google Sheets, BigQuery), including data cleaning, validation, handling null/NaN values, and restructuring datasets to ensure analytical consistency.",
+                    "Designed data architecture and analytical models for corporate dashboards, supporting cash balance monitoring, KPI tracking, and management reporting through structured data pipelines.",
+                    "Collaborated with stakeholders to refine analytics requirements and improve dashboard usability, incorporating user feedback, visual design standards, and business logic to enhance decision-making support.",
                   ],
                 },
               ].map((item) => (

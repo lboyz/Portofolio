@@ -12,7 +12,7 @@ export function ProjectCard({
   year,
 }: ProjectCardProps) {
   return (
-    <article className="section-card flex h-full flex-col gap-4 p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-[1.02] sm:gap-5 sm:p-6">
+    <article className="section-card star-border flex h-full flex-col gap-4 p-5 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:scale-[1.02] sm:gap-5 sm:p-6">
       <div className="space-y-2 sm:space-y-3">
         <div className="flex items-center justify-between text-[10px] uppercase tracking-[0.2em] text-ink-700/70 dark:text-white/60 sm:text-xs">
           <span>Project</span>

@@ -1,12 +1,15 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
+import { BackgroundSquares } from "./components/BackgroundSquares";
 import { Button } from "./components/Button";
 import { Footer } from "./components/Footer";
 import { Navbar } from "./components/Navbar";
+import ProfileCard from "./components/ProfileCard";
 import { ProjectCard } from "./components/ProjectCard";
 import { SectionReveal } from "./components/SectionReveal";
 import { SectionTitle } from "./components/SectionTitle";
 import { SkillBadge } from "./components/SkillBadge";
+import { WelcomeIntro } from "./components/WelcomeIntro";
 import {
   featuredProjectIds,
   profile,
@@ -14,7 +17,7 @@ import {
   projects,
   skillGroups,
 } from "./data/content";
-import profileImage from "./assets/profile.jpg";
+import profileImage from "./assets/profile.png";
 import bootstrapLogo from "./assets/logo-lang/BOOTSTRAP.png";
 import cssLogo from "./assets/logo-lang/CSS.png";
 import excelLogo from "./assets/logo-lang/EXCEL.png";
@@ -47,6 +50,7 @@ function App() {
   const [activeFilter, setActiveFilter] = useState<ProjectFilter>("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [activeSkill, setActiveSkill] = useState<SkillFilter>("web");
+  const [showWelcome, setShowWelcome] = useState(true);
   const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
@@ -57,6 +61,11 @@ function App() {
     const shouldUseDark = stored ? stored === "dark" : prefersDark;
     setIsDark(shouldUseDark);
     document.documentElement.classList.toggle("dark", shouldUseDark);
+  }, []);
+
+  useEffect(() => {
+    const timeout = window.setTimeout(() => setShowWelcome(false), 2400);
+    return () => window.clearTimeout(timeout);
   }, []);
 
   const handleToggleTheme = () => {
@@ -104,7 +113,7 @@ function App() {
     );
   }, [activeSkill]);
 
-  const skillLogoMap: Record<string, string> = {
+const skillLogoMap: Record<string, string> = {
     HTML: htmlLogo,
     CSS: cssLogo,
     PHP: phpLogo,
@@ -129,108 +138,101 @@ function App() {
     "Looker Studio": lookerLogo,
   };
 
+  const profileIconSvg =
+    "data:image/svg+xml;utf8," +
+    encodeURIComponent(
+      `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+        <path d="M32 38L6 64l26 26" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M96 38l26 26-26 26" fill="none" stroke="white" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M76 26L52 102" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>
+      </svg>`
+    );
+
   return (
     <div className="min-h-screen">
-      <a className="skip-link" href="#main-content">
-        Skip to content
-      </a>
-      <Navbar isDark={isDark} onToggleTheme={handleToggleTheme} />
+      <BackgroundSquares
+        squareSize={50}
+        speed={0.2}
+        direction="diagonal"
+      />
+      <WelcomeIntro show={showWelcome} />
+      <div className="relative z-10">
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <Navbar isDark={isDark} onToggleTheme={handleToggleTheme} />
 
-      <main
-        id="main-content"
-        className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-12 sm:gap-20 sm:px-6 sm:py-16 lg:gap-28 lg:py-20"
-      >
-        <section id="home" className="scroll-mt-28">
-          <div className="grid items-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 lg:grid-cols-[1.15fr_0.85fr]">
-            <motion.div
-              className="space-y-8"
-              initial="hidden"
-              animate="visible"
-              variants={heroMotion}
-            >
-              <p className="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-700/70 dark:text-white/60 sm:text-left sm:text-xs">
-                <span className="inline-block transition-transform duration-300 hover:scale-105">
-                  {profile.tagline}
-                </span>
-              </p>
-              <div className="space-y-3 sm:space-y-4">
-                <motion.h1
-                  className="text-center font-heading text-2xl font-semibold leading-tight text-ink-900 dark:text-white sm:text-left sm:text-3xl sm:leading-normal md:text-4xl lg:text-5xl xl:text-6xl"
-                  variants={heroMotion}
-                >
-                  Turning data into clarity and websites into impact.
-                </motion.h1>
-                <p className="mx-auto max-w-2xl text-center text-xs leading-relaxed text-ink-700 dark:text-white/70 sm:text-left sm:text-sm sm:leading-normal md:text-base lg:text-lg">
-                  Hi, I am <span className="font-semibold">{profile.name}</span>
-                  , an Informatics graduate with a focus on data analytics,
-                  machine learning, and web development. I love building
-                  data-driven solutions that are structured, user-oriented, and
-                  impactful.
+        <main
+          id="main-content"
+          className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-12 sm:gap-20 sm:px-6 sm:py-16 lg:gap-28 lg:py-20"
+        >
+          <section id="home" className="scroll-mt-28">
+            <div className="grid items-center gap-8 sm:gap-10 md:gap-12 lg:gap-14 lg:grid-cols-[1.15fr_0.85fr]">
+              <motion.div
+                className="space-y-8"
+                initial="hidden"
+                animate="visible"
+                variants={heroMotion}
+              >
+                <p className="text-center text-[10px] font-semibold uppercase tracking-[0.2em] text-ink-700/70 dark:text-white/60 sm:text-left sm:text-xs">
+                  <span className="inline-block transition-transform duration-300 hover:scale-105">
+                    {profile.tagline}
+                  </span>
                 </p>
-              </div>
-              <div className="flex flex-wrap justify-center gap-3 sm:justify-start sm:gap-4">
-                <Button href="#projects">View Projects</Button>
-                <Button variant="ghost" href="#contact">
-                  Contact
-                </Button>
-              </div>
-              <div className="flex flex-col items-center gap-2 text-center text-xs text-ink-700 dark:text-white/70 sm:flex-row sm:items-start sm:justify-start sm:text-left sm:gap-6 sm:text-sm">
-                <span>Focus: data analytics + web development</span>
-                <span>Open to collaboration and new roles</span>
-              </div>
-            </motion.div>
-            <motion.div
-              className="section-card relative overflow-hidden p-5 sm:p-6 md:p-8"
-              initial="hidden"
-              animate="visible"
-              variants={heroMotion}
-            >
-              <div className="space-y-5 sm:space-y-6">
-                <div className="text-center">
-                  <h2 className="font-heading text-lg font-semibold text-ink-900 dark:text-white sm:text-xl md:text-2xl">
-                    Highlights
-                  </h2>
-                  <p className="text-xs text-ink-700 dark:text-white/70 sm:text-sm">
-                    Data + Web focus
+                <div className="space-y-3 sm:space-y-4">
+                  <motion.h1
+                    className="text-center font-heading text-2xl font-semibold leading-tight text-ink-900 dark:text-white sm:text-left sm:text-3xl sm:leading-normal md:text-4xl lg:text-5xl xl:text-6xl"
+                    variants={heroMotion}
+                  >
+                    Turning data into clarity and websites into impact.
+                  </motion.h1>
+                  <p className="mx-auto max-w-2xl text-center text-xs leading-relaxed text-ink-700 dark:text-white/70 sm:text-left sm:text-sm sm:leading-normal md:text-base lg:text-lg">
+                    Hi, I am{" "}
+                    <span className="font-semibold">{profile.name}</span>, an
+                    Informatics graduate with a focus on data analytics, machine
+                    learning, and web development. I love building data-driven
+                    solutions that are structured, user-oriented, and impactful.
                   </p>
                 </div>
-                <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
-                  {[
-                    "Author and presenter at ICoDSA 2025",
-                    "Analytics + dashboard delivery",
-                    "Clean, accessible UI",
-                    "Data-driven product mindset",
-                  ].map((item) => (
-                    <div
-                      key={item}
-                      className="rounded-xl border border-ink-900/10 bg-white/80 px-3 py-2.5 text-center text-xs text-ink-800 shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-white/90 dark:border-white/10 dark:bg-white/5 dark:text-white/75 dark:hover:bg-white/10 sm:px-4 sm:py-3 sm:text-left sm:text-sm"
-                    >
-                      {item}
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap justify-center gap-3">
-                  <Button
-                    href={profile.linkedin}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    View LinkedIn
+                <div className="flex flex-wrap justify-center gap-3 sm:justify-start sm:gap-4">
+                  <Button href="#projects">View Projects</Button>
+                  <Button variant="ghost" href="#contact">
+                    Contact
                   </Button>
                 </div>
-              </div>
-              <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-500/20 blur-3xl animate-pulse" />
-              <div
-                className="pointer-events-none absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl animate-pulse"
-                style={{ animationDelay: "1s" }}
-              />
-            </motion.div>
-          </div>
-        </section>
+                <div className="flex flex-col items-center gap-2 text-center text-xs text-ink-700 dark:text-white/70 sm:flex-row sm:items-start sm:justify-start sm:text-left sm:gap-6 sm:text-sm">
+                  <span>Focus: data analytics + web development</span>
+                  <span>Open to collaboration and new roles</span>
+                </div>
+              </motion.div>
+              <motion.div
+                initial="hidden"
+                animate="visible"
+                variants={heroMotion}
+              >
+                <ProfileCard
+                  avatarUrl={profileImage}
+                  miniAvatarUrl={profileImage}
+                  iconUrl={profileIconSvg}
+                  name={profile.name}
+                  title={profile.tagline}
+                  handle="lboyz"
+                  status="Available"
+                  contactText="Email"
+                  showIcon
+                  showBehindGlow
+                  customInnerGradient="linear-gradient(145deg, rgba(8, 12, 20, 0.95) 0%, rgba(24, 32, 52, 0.9) 45%, rgba(12, 16, 28, 0.98) 100%)"
+                  onContactClick={() => {
+                    window.location.href = `mailto:${profile.email}`;
+                  }}
+                />
+              </motion.div>
+            </div>
+          </section>
 
         <section id="about" className="scroll-mt-28">
           <SectionReveal>
-            <div className="section-card grid gap-6 p-5 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:p-10 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="section-card star-border grid gap-6 p-5 sm:gap-8 sm:p-6 md:gap-10 md:p-8 lg:p-10 lg:grid-cols-[1.1fr_0.9fr]">
               <div className="space-y-4 sm:space-y-6">
                 <div className="text-center">
                   <SectionTitle
@@ -240,20 +242,58 @@ function App() {
                     centerTitle={true}
                   />
                 </div>
-                <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
+                {/* <div className="flex flex-wrap justify-center gap-3 sm:justify-start">
                   <Button href="#projects">View Projects</Button>
                   <Button variant="ghost" href="#contact">
                     Contact
                   </Button>
-                </div>
+                </div> */}
               </div>
               <div className="flex flex-col items-center gap-6">
-                <div className="w-full rounded-2xl border border-ink-900/10 bg-white/80 p-5 text-xs text-ink-800 shadow-md backdrop-blur-sm transition-all duration-300 hover:shadow-lg dark:border-white/10 dark:bg-white/5 dark:text-white/75 dark:hover:bg-white/10 sm:p-6 sm:text-sm">
-                  <h3 className="text-center font-heading text-base font-semibold text-ink-900 dark:text-white sm:text-left sm:text-lg">
+                <motion.div
+                  className="section-card star-border relative overflow-hidden p-5 sm:p-6 md:p-8"
+                  initial="hidden"
+                  animate="visible"
+                  variants={heroMotion}
+                >
+                  <div className="space-y-3 sm:space-y-1">
+                    <div className="text-center">
+                      <h2 className="font-heading text-lg font-semibold text-ink-900 dark:text-white sm:text-xl md:text-2xl">
+                        Highlights
+                      </h2>
+                      <p className="text-xs text-ink-700 dark:text-white/70 sm:text-sm">
+                        Data + Web focus
+                      </p>
+                    </div>
+                    <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
+                      {[
+                        "Author and presenter at ICoDSA 2025",
+                        "Analytics + dashboard delivery",
+                        "Clean, accessible UI",
+                        "Data-driven product mindset",
+                      ].map((item) => (
+                        <div
+                          key={item}
+                          className="rounded-xl border border-ink-900/10 bg-white/80 px-3 py-2.5 text-center text-xs text-ink-800 shadow-sm backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:shadow-md hover:bg-white/90 dark:border-white/10 dark:bg-white/5 dark:text-white/75 dark:hover:bg-white/10 sm:px-4 sm:py-3 sm:text-left sm:text-sm"
+                        >
+                          {item}
+                        </div>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap justify-center gap-3"></div>
+                  </div>
+                  <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-accent-500/20 blur-3xl animate-pulse" />
+                  <div
+                    className="pointer-events-none absolute -left-10 -bottom-10 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl animate-pulse"
+                    style={{ animationDelay: "1s" }}
+                  />
+                </motion.div>
+                <div className="section-card star-border w-full p-5 text-xs text-ink-800 sm:p-6 sm:text-sm">
+                  <h3 className="text-center font-heading text-base font-semibold text-ink-900 dark:text-white sm:text-center sm:text-lg">
                     Quick Facts
                   </h3>
-                  <div className="my-3 h-px bg-gradient-to-r from-transparent via-ink-900/10 to-transparent dark:via-white/10 sm:my-4" />
-                  <ul className="space-y-2 text-center sm:space-y-3 sm:text-left">
+                  <div className="my-3 h-px bg-gradient-to-r from-transparent via-ink-900/10 to-transparent dark:via-white/15 sm:my-4" />
+                  <ul className="space-y-2 text-center text-ink-800 dark:text-slate-300 sm:space-y-3 sm:text-left">
                     <li>
                       <span className="font-semibold text-ink-900 dark:text-white">
                         Education:
@@ -274,11 +314,11 @@ function App() {
                     </li>
                   </ul>
                 </div>
-                <img
+                {/* <img
                   src={profileImage}
                   alt="Duta Razaq"
                   className="h-40 w-40 rounded-full object-cover shadow-lg ring-4 ring-white/50 transition-all duration-300 hover:scale-105 hover:shadow-xl sm:h-48 sm:w-48 dark:ring-white/20"
-                />
+                /> */}
               </div>
             </div>
           </SectionReveal>
@@ -309,7 +349,7 @@ function App() {
             </div>
             {activeSkillGroup ? (
               <div className="mt-8">
-                <div className="section-card w-full p-6 sm:p-8">
+                <div className="section-card star-border w-full p-6 sm:p-8">
                   <div className="flex flex-col items-center gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
                     <h3 className="text-center font-heading text-xl font-semibold text-ink-900 dark:text-white sm:text-left sm:text-2xl">
                       {activeSkillGroup.title} Skills
@@ -350,6 +390,7 @@ function App() {
                   eyebrow="Projects"
                   title="Selected work across web, software, and data."
                   description="Filter by category and search by keyword to explore the work."
+                  descriptionAlign="left"
                 />
               </div>
               <div className="space-y-6">
@@ -421,8 +462,8 @@ function App() {
                   bullets: [
                     "Developed and maintained interactive dashboards using Looker Studio integrated with BigQuery, enabling automated data updates, dynamic filtering, and real-time financial and operational insights across PTPN Group.",
                     "Performed data preparation and integration from multiple sources (Excel, Google Sheets, BigQuery), including data cleaning, validation, handling null/NaN values, and restructuring datasets to ensure analytical consistency.",
-                    "Designed data architecture and analytical models for corporate dashboards, supporting cash balance monitoring, KPI tracking, and management reporting through structured data pipelines.",
-                    "Collaborated with stakeholders to refine analytics requirements and improve dashboard usability, incorporating user feedback, visual design standards, and business logic to enhance decision-making support.",
+                    "Designed interactive and insightful data visualizations to support analysis and decision-making.",
+                    "Collaborated with the development team to build a KPI application and conducted UAT for the ONEPTPN HUB application.",
                   ],
                 },
                 {
@@ -457,11 +498,11 @@ function App() {
                     "Assisted field operations, including ODP installation, Drop Core dismantling, and ODC validation to maintain service quality.",
                     "Prepared daily administrative reports to support the operations of the Data Management Unit.",
                   ],
-                },                
+                },
               ].map((item) => (
                 <div
                   key={item.title}
-                  className="section-card p-4 sm:p-5 md:p-6"
+                  className="section-card star-border p-4 sm:p-5 md:p-6"
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-ink-700 dark:text-white/70 sm:text-sm">
                     <span>{item.company}</span>
@@ -483,7 +524,7 @@ function App() {
 
         <section id="contact" className="scroll-mt-28">
           <SectionReveal>
-            <div className="section-card flex flex-col items-center gap-5 p-5 text-center sm:gap-6 sm:p-6 md:p-8 lg:p-10">
+            <div className="section-card star-border flex flex-col items-center gap-5 p-5 text-center sm:gap-6 sm:p-6 md:p-8 lg:p-10">
               <SectionTitle
                 eyebrow="Contact"
                 title="Let's build something meaningful together."
@@ -517,9 +558,10 @@ function App() {
             </div>
           </SectionReveal>
         </section>
-      </main>
+        </main>
 
-      <Footer />
+        <Footer />
+      </div>
     </div>
   );
 }

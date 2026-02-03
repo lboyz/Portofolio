@@ -59,6 +59,7 @@ interface ProfileCardProps {
   showUserInfo?: boolean;
   showIcon?: boolean;
   onContactClick?: () => void;
+  variant?: "dark" | "light";
 }
 
 interface TiltEngine {
@@ -93,6 +94,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
   showUserInfo = true,
   showIcon = true,
   onContactClick,
+  variant = "dark",
 }) => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const shellRef = useRef<HTMLDivElement>(null);
@@ -402,6 +404,42 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       "--sunpillar-clr-4": "var(--sunpillar-4)",
       "--sunpillar-clr-5": "var(--sunpillar-5)",
       "--sunpillar-clr-6": "var(--sunpillar-6)",
+      "--pc-surface":
+        variant === "light"
+          ? "rgba(248, 250, 252, 0.92)"
+          : "rgba(0, 0, 0, 0.9)",
+      "--pc-ui-bg":
+        variant === "light"
+          ? "rgba(255, 255, 255, 0.7)"
+          : "rgba(255, 255, 255, 0.1)",
+      "--pc-ui-border":
+        variant === "light"
+          ? "rgba(15, 23, 42, 0.15)"
+          : "rgba(255, 255, 255, 0.1)",
+      "--pc-btn-bg":
+        variant === "light"
+          ? "rgba(15, 23, 42, 0.9)"
+          : "rgba(255, 255, 255, 0.1)",
+      "--pc-btn-text":
+        variant === "light"
+          ? "rgba(248, 250, 252, 0.98)"
+          : "rgba(255, 255, 255, 0.92)",
+      "--pc-btn-border":
+        variant === "light"
+          ? "rgba(15, 23, 42, 0.2)"
+          : "rgba(255, 255, 255, 0.15)",
+      "--pc-handle":
+        variant === "light"
+          ? "rgba(15, 23, 42, 0.9)"
+          : "rgba(255, 255, 255, 0.9)",
+      "--pc-status":
+        variant === "light"
+          ? "rgba(51, 65, 85, 0.7)"
+          : "rgba(255, 255, 255, 0.7)",
+      "--pc-name-from": variant === "light" ? "#0f172a" : "#ffffff",
+      "--pc-name-to": variant === "light" ? "#334155" : "#6f6fbe",
+      "--pc-title-from": variant === "light" ? "#334155" : "#ffffff",
+      "--pc-title-to": variant === "light" ? "#64748b" : "#4a4ac0",
     }),
     [
       iconUrl,
@@ -410,6 +448,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       customInnerGradient,
       behindGlowColor,
       behindGlowSize,
+      variant,
     ],
   );
 
@@ -469,7 +508,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
     backgroundRepeat: "repeat",
     backgroundSize: "110px 110px",
     backgroundPosition: "center",
-    opacity: 0.22,
+    opacity: variant === "light" ? 0.7 : 0.25,
+    filter: variant === "light" ? "brightness(0)" : "none",
     mixBlendMode: "soft-light" as const,
     maskImage:
       "linear-gradient(to top, transparent 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.9) 85%)",
@@ -531,7 +571,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               "rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px) calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px",
             transition: "transform 1s ease",
             transform: "translateZ(0) rotateX(0deg) rotateY(0deg)",
-            background: "rgba(0, 0, 0, 0.9)",
+            background: "var(--pc-surface)",
             backfaceVisibility: "hidden",
           }}
           onMouseEnter={(event) => {
@@ -554,7 +594,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             className="absolute inset-0"
             style={{
               backgroundImage: "var(--inner-gradient)",
-              backgroundColor: "rgba(0, 0, 0, 0.9)",
+              backgroundColor: "var(--pc-surface)",
               borderRadius: cardRadius,
               display: "grid",
               gridArea: "1 / -1",
@@ -594,7 +634,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
               />
               {showUserInfo && (
                 <div
-                  className="absolute z-[2] flex items-center justify-between border border-white/10 backdrop-blur-[30px] pointer-events-auto"
+                  className="absolute z-[2] flex items-center justify-between backdrop-blur-[30px] pointer-events-auto"
                   style={
                     {
                       "--ui-inset": "20px",
@@ -602,7 +642,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                       bottom: "var(--ui-inset)",
                       left: "var(--ui-inset)",
                       right: "var(--ui-inset)",
-                      background: "rgba(255, 255, 255, 0.1)",
+                      background: "var(--pc-ui-bg)",
+                      border: "1px solid var(--pc-ui-border)",
                       borderRadius:
                         "calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)))",
                       padding: "2px 8px",
@@ -633,22 +674,31 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                       />
                     </div>
                     <div className="flex flex-col items-start gap-1.5">
-                      <div className="text-sm font-medium leading-none text-white/90">
+                      <div
+                        className="text-sm font-medium leading-none"
+                        style={{ color: "var(--pc-handle)" }}
+                      >
                         @{handle}
                       </div>
-                      <div className="text-sm leading-none text-white/70">
+                      <div
+                        className="text-sm leading-none"
+                        style={{ color: "var(--pc-status)" }}
+                      >
                         {status}
                       </div>
                     </div>
                   </div>
                   <button
-                    className="cursor-pointer rounded-lg border border-white/10 px-4 py-3 text-xs font-semibold text-white/90 backdrop-blur-[10px] transition-all duration-200 ease-out hover:-translate-y-px hover:border-white/40"
+                    className="cursor-pointer rounded-lg px-4 py-3 text-xs font-semibold backdrop-blur-[10px] transition-all duration-200 ease-out hover:-translate-y-px"
                     onClick={handleContactClick}
                     style={{
                       pointerEvents: "auto",
                       display: "block",
                       gridArea: "auto",
                       borderRadius: "8px",
+                      background: "var(--pc-btn-bg)",
+                      color: "var(--pc-btn-text)",
+                      border: "1px solid var(--pc-btn-border)",
                     }}
                     type="button"
                     aria-label={`Contact ${name || "user"}`}
@@ -679,7 +729,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   style={{
                     fontSize: "min(5svh, 3em)",
                     backgroundImage:
-                      "linear-gradient(to bottom, #fff, #6f6fbe)",
+                      "linear-gradient(to bottom, var(--pc-name-from), var(--pc-name-to))",
                     backgroundSize: "1em 1.5em",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -700,7 +750,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                     fontSize: "min(2svh, 3em)",
                     margin: "0 auto",
                     backgroundImage:
-                      "linear-gradient(to bottom, #fff, #4a4ac0)",
+                      "linear-gradient(to bottom, var(--pc-title-from), var(--pc-title-to))",
                     backgroundSize: "1em 1.5em",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",

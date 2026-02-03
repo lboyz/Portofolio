@@ -220,7 +220,17 @@ function App() {
                   contactText="Email"
                   showIcon
                   showBehindGlow
-                  customInnerGradient="linear-gradient(145deg, rgba(8, 12, 20, 0.95) 0%, rgba(24, 32, 52, 0.9) 45%, rgba(12, 16, 28, 0.98) 100%)"
+                  variant={isDark ? "dark" : "light"}
+                  customInnerGradient={
+                    isDark
+                      ? "linear-gradient(145deg, rgba(8, 12, 20, 0.95) 0%, rgba(24, 32, 52, 0.9) 45%, rgba(12, 16, 28, 0.98) 100%)"
+                      : "linear-gradient(145deg, rgba(226, 232, 240, 0.92) 0%, rgba(203, 213, 225, 0.86) 45%, rgba(241, 245, 249, 0.95) 100%)"
+                  }
+                  behindGlowColor={
+                    isDark
+                      ? "rgba(125, 190, 255, 0.67)"
+                      : "rgba(148, 163, 184, 0.65)"
+                  }
                   onContactClick={() => {
                     window.location.href = `mailto:${profile.email}`;
                   }}

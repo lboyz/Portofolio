@@ -27,14 +27,16 @@ export function SectionTitle({
       </p>
       <h2
         className={`font-heading text-2xl font-semibold text-ink-900 dark:text-white sm:text-3xl md:text-4xl lg:text-5xl ${
-          centerTitle ? "text-left" : "text-center sm:text-left"
+          centerTitle ? "text-center" : "text-center sm:text-left"
         }`}
       >
         {title}
       </h2>
       {description ? (
         <p
-          className={`mx-auto max-w-2xl ${descriptionClasses} text-sm leading-relaxed text-ink-700 dark:text-white/70 sm:text-base md:text-lg`}
+          className={`mx-auto max-w-2xl ${descriptionClasses} text-sm leading-relaxed text-ink-700 dark:text-white/70 sm:mx-0 sm:max-w-none md:text-lg ${
+            descriptionAlign === "left" ? "sm:w-full" : ""
+          }`}
         >
           {description}
         </p>

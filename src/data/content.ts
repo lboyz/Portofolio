@@ -47,12 +47,12 @@ export const skillGroups: SkillGroup[] = [
       "Laravel (Advanced)",
       "TypeScript (Intermediate)",
       "Go (Intermediate)",
-      "VueJS (Intermediate)",
+      "VueJS (Advanced)",
       "Next.js (Intermediate)",
-      "NodeJS (Beginner)",
+      "NodeJS (Intermediate)",
       "Tailwind (Advanced)",
       "Bootstrap (Advanced)",
-      "ReactJS (Beginner)",
+      "ReactJS (Intermediate)",
     ],
   },
   {
@@ -64,6 +64,7 @@ export const skillGroups: SkillGroup[] = [
     items: [
       "Python (Advanced)",
       "Excel (Advanced)",
+      "BigQuery (Intermediate)",
       "SQL (Intermediate)",
       "Tableau (Beginner)",
       "Power BI (Intermediate)",
@@ -146,6 +147,18 @@ export const projects: Project[] = [
     demoUrl: "https://dutsky.netlify.app/",
     repoUrl: "https://github.com/lboyz/Portofolio",
     impact: ["Premium single-page layout", "Project filtering", "Dark mode"],
+    year: "2025",
+  },
+  {
+    id: "findash",
+    title: "FinDash (Financial Dashboard)",
+    description:
+      "A web dashboard to track personal finances, including income and expense records.",
+    category: "web",
+    stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
+    demoUrl: "https://findash.koyeb.app/",
+    repoUrl: "https://github.com/lboyz/FinDash",
+    impact: ["Income tracking", "Expense tracking", "Dashboard insights"],
     year: "2025",
   },
 ];

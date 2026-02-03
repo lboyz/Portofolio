@@ -31,15 +31,15 @@ export function SkillBadge({
             }`}
           />
         ) : (
-          logo ?? label.slice(0, 2).toUpperCase()
+          (logo ?? label.slice(0, 2).toUpperCase())
         )}
       </span>
-      <div className="flex flex-col items-center gap-0.5 sm:flex-1 sm:items-start sm:gap-0">
-        <span className="text-center text-xs sm:text-left sm:text-sm">
+      <div className="flex min-w-0 flex-col items-center gap-0.5 sm:flex-1 sm:items-start sm:gap-0">
+        <span className="break-words text-center text-xs sm:text-left sm:text-sm">
           {label}
         </span>
         {level ? (
-          <span className="shrink-0 text-[9px] font-semibold uppercase tracking-[0.15em] text-ink-700/70 dark:text-white/60 sm:text-[10px] sm:tracking-[0.2em]">
+          <span className="shrink-0 break-all text-[9px] font-semibold uppercase tracking-[0.15em] text-ink-700/70 dark:text-white/60 sm:text-[10px] sm:tracking-[0.2em]">
             {level}
           </span>
         ) : null}

@@ -40,7 +40,7 @@ export function Navbar({ isDark, onToggleTheme }: NavbarProps) {
         </nav>
         <div className="flex items-center gap-2 md:hidden">
           <button
-            className="rounded-full border border-ink-900/20 px-2.5 py-1.5 text-[10px] font-semibold text-ink-900 transition-all duration-300 hover:bg-ink-900/5 hover:border-ink-900/30 dark:border-white/20 dark:text-white dark:hover:bg-white/10 dark:hover:border-white/30 sm:px-3 sm:py-2 sm:text-xs"
+            className="rounded-full border border-ink-900/20 px-3.5 py-2 text-xs font-semibold text-ink-900 transition-all duration-300 hover:bg-ink-900/5 hover:border-ink-900/30 dark:border-white/20 dark:text-white dark:hover:bg-white/10 dark:hover:border-white/30 sm:px-3 sm:py-2"
             type="button"
             onClick={onToggleTheme}
             aria-label="Toggle dark mode"
@@ -48,7 +48,7 @@ export function Navbar({ isDark, onToggleTheme }: NavbarProps) {
             {isDark ? "Light" : "Dark"}
           </button>
           <button
-            className="rounded-full border border-ink-900/20 px-2.5 py-1.5 text-[10px] font-semibold text-ink-900 transition-all duration-300 hover:bg-ink-900/5 hover:border-ink-900/30 dark:border-white/20 dark:text-white dark:hover:bg-white/10 dark:hover:border-white/30 sm:px-3 sm:py-2 sm:text-xs"
+            className="rounded-full border border-ink-900/20 px-3.5 py-2 text-xs font-semibold text-ink-900 transition-all duration-300 hover:bg-ink-900/5 hover:border-ink-900/30 dark:border-white/20 dark:text-white dark:hover:bg-white/10 dark:hover:border-white/30 sm:px-3 sm:py-2"
             type="button"
             onClick={() => setIsOpen((prev) => !prev)}
             aria-expanded={isOpen}

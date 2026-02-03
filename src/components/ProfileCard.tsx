@@ -20,7 +20,7 @@ const adjust = (
   fMin: number,
   fMax: number,
   tMin: number,
-  tMax: number
+  tMax: number,
 ): number => round(tMin + ((tMax - tMin) * (v - fMin)) / (fMax - fMin));
 
 const KEYFRAMES_ID = "pc-keyframes";
@@ -138,7 +138,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         "--pointer-from-center": `${clamp(
           Math.hypot(percentY - 50, percentX - 50) / 50,
           0,
-          1
+          1,
         )}`,
         "--pointer-from-top": `${percentY / 100}`,
         "--pointer-from-left": `${percentX / 100}`,
@@ -222,7 +222,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
 
   const getOffsets = (
     evt: PointerEvent,
-    el: HTMLElement
+    el: HTMLElement,
   ): { x: number; y: number } => {
     const rect = el.getBoundingClientRect();
     return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
@@ -235,7 +235,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       const { x, y } = getOffsets(event, shell);
       tiltEngine.setTarget(x, y);
     },
-    [tiltEngine]
+    [tiltEngine],
   );
 
   const handlePointerEnter = useCallback(
@@ -253,7 +253,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       const { x, y } = getOffsets(event, shell);
       tiltEngine.setTarget(x, y);
     },
-    [tiltEngine]
+    [tiltEngine],
   );
 
   const handlePointerLeave = useCallback((): void => {
@@ -289,17 +289,18 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       const x = clamp(
         centerX + gamma * mobileTiltSensitivity,
         0,
-        shell.clientWidth
+        shell.clientWidth,
       );
       const y = clamp(
-        centerY + (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
+        centerY +
+          (beta - ANIMATION_CONFIG.DEVICE_BETA_OFFSET) * mobileTiltSensitivity,
         0,
-        shell.clientHeight
+        shell.clientHeight,
       );
 
       tiltEngine.setTarget(x, y);
     },
-    [tiltEngine, mobileTiltSensitivity]
+    [tiltEngine, mobileTiltSensitivity],
   );
 
   useEffect(() => {
@@ -329,7 +330,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             if (state === "granted") {
               window.addEventListener(
                 "deviceorientation",
-                deviceOrientationHandler
+                deviceOrientationHandler,
               );
             }
           })
@@ -409,7 +410,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
       customInnerGradient,
       behindGlowColor,
       behindGlowSize,
-    ]
+    ],
   );
 
   const handleContactClick = useCallback((): void => {
@@ -521,8 +522,8 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
         <section
           className="relative grid overflow-hidden"
           style={{
-            height: "80svh",
-            maxHeight: "540px",
+            height: "min(50svh, 400px)", // Reduced for mobile
+            maxHeight: "520px",
             aspectRatio: "0.718",
             borderRadius: cardRadius,
             backgroundBlendMode: "color-dodge, normal, normal, normal",
@@ -541,8 +542,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
           onMouseLeave={(event) => {
             const shell = shellRef.current;
             if (shell?.classList.contains("entering")) {
-              event.currentTarget.style.transition =
-                "transform 180ms ease-out";
+              event.currentTarget.style.transition = "transform 180ms ease-out";
             } else {
               event.currentTarget.style.transition = "transform 1s ease";
             }
@@ -605,7 +605,7 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                       background: "rgba(255, 255, 255, 0.1)",
                       borderRadius:
                         "calc(max(0px, var(--card-radius) - var(--ui-inset) + var(--ui-radius-bias)))",
-                      padding: "12px 14px",
+                      padding: "2px 8px",
                     } as React.CSSProperties
                   }
                 >
@@ -672,13 +672,14 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
             >
               <div
                 className="absolute flex w-full flex-col"
-                style={{ top: "3em", display: "flex", gridArea: "auto" }}
+                style={{ top: "1em", display: "flex", gridArea: "auto" }}
               >
                 <h3
                   className="m-0 font-semibold"
                   style={{
                     fontSize: "min(5svh, 3em)",
-                    backgroundImage: "linear-gradient(to bottom, #fff, #6f6fbe)",
+                    backgroundImage:
+                      "linear-gradient(to bottom, #fff, #6f6fbe)",
                     backgroundSize: "1em 1.5em",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -696,9 +697,10 @@ const ProfileCardComponent: React.FC<ProfileCardProps> = ({
                   style={{
                     position: "relative",
                     top: "-12px",
-                    fontSize: "16px",
+                    fontSize: "min(2svh, 3em)",
                     margin: "0 auto",
-                    backgroundImage: "linear-gradient(to bottom, #fff, #4a4ac0)",
+                    backgroundImage:
+                      "linear-gradient(to bottom, #fff, #4a4ac0)",
                     backgroundSize: "1em 1.5em",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",

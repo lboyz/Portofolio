@@ -92,7 +92,7 @@ export const projects: Project[] = [
       "Analyzes causes of death in Indonesia (2000-2022) with interactive visuals built from reliable data sources.",
     category: "data",
     stack: ["Python", "Streamlit"],
-    demoUrl: "https://tubes-visualisasi-dataduway.streamlit.app/",
+    demoUrl: "https://visualisasi-penyebab-kematian.streamlit.app/",
     repoUrl: "https://github.com/lboyz/Analisis-Penyebab-Kematian-di-Indonesia",
     impact: [
       "Interactive dashboards",

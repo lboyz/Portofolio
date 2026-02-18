@@ -113,6 +113,20 @@ export const projects: Project[] = [
     year: "2024",
   },
   {
+    id: "ptpn-dashboard",
+    title: "Dashboard Posisi Saldo PTPN Group",
+    description:
+      "Executive dashboard that monitors PTPN Group daily bank balances and variance gaps.",
+    category: "data",
+    stack: ["Looker Studio", "Excel", "BigQuery"],
+    impact: [
+      "Daily financial monitoring",
+      "Variance tracking",
+      "Executive-ready view",
+    ],
+    year: "2025",
+  },
+  {
     id: "culture-booster",
     title: "Culture-Booster Game",
     description: 'A lightweight website to play a quick "guess the song" game.',
@@ -124,17 +138,15 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    id: "ptpn-dashboard",
-    title: "Dashboard Posisi Saldo PTPN Group",
+    id: "findash",
+    title: "FinDash (Financial Dashboard)",
     description:
-      "Executive dashboard that monitors PTPN Group daily bank balances and variance gaps.",
-    category: "data",
-    stack: ["Looker Studio", "BigQuery"],
-    impact: [
-      "Daily financial monitoring",
-      "Variance tracking",
-      "Executive-ready view",
-    ],
+      "A web dashboard to track personal finances, including income and expense records.",
+    category: "web",
+    stack: ["Laravel", "React", "TypeScript", "Vite", "Tailwind CSS"],
+    demoUrl: "https://findash.koyeb.app/",
+    repoUrl: "https://github.com/lboyz/FinDash",
+    impact: ["Income tracking", "Expense tracking", "Dashboard insights"],
     year: "2025",
   },
   {
@@ -150,16 +162,18 @@ export const projects: Project[] = [
     year: "2025",
   },
   {
-    id: "findash",
-    title: "FinDash (Financial Dashboard)",
+    id: "holding-dashboard",
+    title: "Dashboard Financial Holding",
     description:
-      "A web dashboard to track personal finances, including income and expense records.",
-    category: "web",
-    stack: ["React", "TypeScript", "Vite", "Tailwind CSS"],
-    demoUrl: "https://findash.koyeb.app/",
-    repoUrl: "https://github.com/lboyz/FinDash",
-    impact: ["Income tracking", "Expense tracking", "Dashboard insights"],
-    year: "2025",
+      "Centralized dashboard for Financial Holding with automated reports and real-time monitoring.",
+    category: "data",
+    stack: ["Looker Studio", "Excel", "BigQuery"],
+    impact: [
+      "Holistic Financial Monitoring",
+      "Financial Reporting",
+      "Financial Analysis",
+    ],
+    year: "2026",
   },
 ];
 

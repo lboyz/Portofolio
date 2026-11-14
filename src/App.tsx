@@ -469,9 +469,20 @@ function App() {
               <div className="mt-6 space-y-4 sm:mt-8 sm:space-y-6">
                 {[
                   {
+                    title: "Officer Data Support - Marketing & Sales",
+                    company: "PT Perkebunan Nusantara IV (Persero)",
+                    year: "05/2026 - Present",
+                    bullets: [
+                      "Developed and maintained interactive dashboards using Looker Studio to provide real-time insights into marketing and sales performance, enabling data-driven decision-making.",
+                      "Create Contract and Sales Reports for the Marketing & Sales Division, ensuring accurate and timely reporting of key metrics.",
+                      "Conducted data analysis to identify trends, patterns, and opportunities for improvement in marketing and sales strategies.",
+                      "Collaborated with Regional and Divisional teams to implement data-driven solutions and optimize marketing and sales processes.",
+                    ],
+                  },
+                  {
                     title: "Data Analytics Intern",
                     company: "PT Perkebunan Nusantara III (Persero)",
-                    year: "10/2025 - Now",
+                    year: "10/2025 - 04/2026",
                     bullets: [
                       "Developed and maintained interactive dashboards using Looker Studio integrated with BigQuery, enabling automated data updates, dynamic filtering, and real-time financial and operational insights across PTPN Group.",
                       "Performed data preparation and integration from multiple sources (Excel, Google Sheets, BigQuery), including data cleaning, validation, handling null/NaN values, and restructuring datasets to ensure analytical consistency.",
